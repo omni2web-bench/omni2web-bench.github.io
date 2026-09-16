@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#14273b">
+  <meta name="description" content="Omni2Web benchmarks multi-step webpage editing from screen recordings with speech, cursor grounding, and revisions. 918 instances, 13,907 edit steps, and three evaluation tracks.">
+  <meta property="og:title" content="Omni2Web: Benchmarking Audiovisual Website Development">
+  <meta property="og:description" content="From “change this” to the right webpage edit. A benchmark of 918 instances and 13,907 edit steps.">
+  <meta property="og:type" content="website">
+  <title>Omni2Web: Benchmarking Audiovisual Website Development</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <script src="site-config.js" defer></script>
+  <script src="assets/results.js" defer></script>
+  <script src="site.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <nav class="nav wrap" aria-label="Main navigation">
+      <a class="wordmark" href="#" aria-label="Omni2Web home"><span class="sr-only">O</span><img class="brand-initial" src="assets/omni2web-o.svg" alt="" width="112" height="100">mni2Web<span class="wordmark-arrow" aria-hidden="true">↗</span></a>
+      <div class="nav-links">
+        <a href="#overview">Overview</a><a href="#benchmark">Benchmark</a><a href="#results">Results</a><a href="#citation">Citation</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero wrap" aria-labelledby="title">
+      <p class="eyebrow"><span aria-hidden="true"></span> Speech · Cursor · Edit history</p>
+      <h1 id="title" aria-label="Omni2Web"><span class="sr-only">O</span><img class="brand-initial" src="assets/omni2web-o.svg" alt="" width="112" height="100" fetchpriority="high">mni2Web</h1>
+      <p class="paper-title">Benchmarking Audiovisual<br class="desktop-break"> Website Development</p>
+      <p class="hero-hook">“Change <span class="cue-word">this<svg viewBox="0 0 32 40" aria-hidden="true"><path d="M4 3 9 33l8-10 12 1Z"/></svg></span>.”<br class="mobile-break"> Which element? What edit?</p>
+      <div class="authors" aria-label="Authors">
+        <span>Minghao Han<sup>1,*</sup></span><span>Zhenghao Xing<sup>2,*</sup></span><span>Xize Cheng<sup>3</sup></span><span>Yuxuan Wang<sup>3</sup></span><span>Yunfei Chu<sup>3</sup></span><span>Qize Yang<sup>3</sup></span><span>Jin Xu<sup>3,‡</sup></span>
+      </div>
+      <p class="affiliations"><span><sup>1</sup> Fudan University</span><span><sup>2</sup> The Chinese University of Hong Kong</span><span><sup>3</sup> Qwen Team, Alibaba Group</span></p>
+      <p class="author-notes">* Equal contribution. <span>‡ Corresponding author.</span></p>
+      <div class="resource-links" aria-label="Project resources">
+        <a class="button primary" data-resource="paper" href="assets/omni2web-paper.pdf">Read the paper <span aria-hidden="true">↗</span></a>
+        <a class="button" data-resource="code" aria-disabled="true">Code <span class="availability">coming soon</span></a>
+        <a class="button" data-resource="dataset" aria-disabled="true">Dataset <span class="availability">coming soon</span></a>
+      </div>
+      <dl class="stats">
+        <div><dt>Instances</dt><dd>918</dd></div>
+        <div><dt>Edit steps</dt><dd>13,907</dd></div>
+        <div><dt>Operation types</dt><dd>12</dd></div>
+        <div><dt>Models evaluated</dt><dd>17</dd></div>
+      </dl>
+    </section>
+
+    <section class="overview wrap section" id="overview" aria-labelledby="overview-title">
+      <div class="section-heading"><p class="eyebrow">01 / The task</p><h2 id="overview-title">Follow the cue.<br>Make the right edit.</h2></div>
+      <p class="lead">A screen recording carries more than words. To edit the right part of a webpage, a model must connect spoken requests with cursor movements, page context, and earlier instructions—including requests the user later undoes.</p>
+      <figure class="overview-figure">
+        <button class="figure-button" data-zoom="assets/overview.png" aria-label="Enlarge the Omni2Web overview">
+          <img src="assets/overview.png" width="3000" height="1428" alt="Omni2Web overview: a sequence of webpage screenshots linked by an orange mouse trajectory, spoken editing requests, before-and-after page comparisons, and the three evaluation tracks." fetchpriority="high">
+        </button>
+        <figcaption>The orange curve follows the mouse trajectory through the recording. The model returns a complete edited HTML page. <span class="zoom-hint">Click to enlarge.</span></figcaption>
+      </figure>
+      <div class="tracks">
+        <article class="track track-a"><div class="track-top"><span class="track-letter">A</span><span class="metric">EFS</span></div><h3>Direct Editing</h3><p>Can the model turn a recording and the source HTML into the requested final webpage?</p><p class="track-flow">Recording + HTML <span aria-hidden="true">→</span> Edited HTML</p></article>
+        <article class="track track-b"><div class="track-top"><span class="track-letter">B</span><span class="metric">IRS</span></div><h3>Instruction Recovery</h3><p>Can the model resolve weak references into explicit targets and editing actions?</p><p class="track-flow">Recording <span aria-hidden="true">→</span> Explicit instructions</p></article>
+        <article class="track track-c"><div class="track-top"><span class="track-letter">C</span><span class="metric">EFS / NIU</span></div><h3>Instruction Utility</h3><p>How useful are recovered instructions when passed to a fixed DeepSeek-v4-pro executor?</p><p class="track-flow">Instructions + HTML <span aria-hidden="true">→</span> Fixed executor</p></article>
+      </div>
+      <p class="section-note">EFS: Edit Fidelity Score. IRS: Instruction Recovery Score. NIU: Normalized Instruction Utility. The tracks provide complementary diagnostic views of intent recovery and code execution.</p>
+    </section>
+
+    <section class="benchmark-band" id="benchmark" aria-labelledby="benchmark-title">
+      <div class="wrap section">
+        <div class="section-heading"><p class="eyebrow">02 / The benchmark</p><h2 id="benchmark-title">Small references.<br>Long editing histories.</h2></div>
+        <div class="benchmark-intro"><p class="lead">918 Chinese and English recordings cover 129 source webpages. Each instance contains 10–20 editing steps, with requests that span text, style, layout, content, and revisions.</p><p>Manually written transcripts and step-level rubrics connect each request to its intended target and action. Final-page evaluation excludes requirements canceled by whole-step reversions, while still checking the resulting requested state.</p></div>
+        <figure class="anatomy-figure">
+          <button class="figure-button" data-zoom="assets/anatomy.png" aria-label="Enlarge the dataset anatomy figure"><img src="assets/anatomy.png" alt="Dataset anatomy of Omni2Web, including operation coverage, revision links, spoken languages, video duration, source pages, sequence lengths, and text-only recoverability." loading="lazy"></button>
+          <figcaption>Dataset anatomy of Omni2Web. Chinese: 465 instances; English: 453. Median recording duration: 128.04 seconds.</figcaption>
+        </figure>
+        <p class="section-note">Source webpages come from <a href="https://huggingface.co/datasets/BroAlanTaps/WebVR" target="_blank" rel="noopener noreferrer">WebVR</a> and are obtained through its original distribution.</p>
+      </div>
+    </section>
+
+    <section class="wrap section" id="results" aria-labelledby="results-title">
+      <div class="section-heading"><p class="eyebrow">03 / Main results</p><h2 id="results-title">Finding the target<br>is only the beginning.</h2></div>
+      <p class="lead">We evaluate 17 open- and closed-source models. The best direct-editing EFS is 51.17; the best instruction-recovery IRS is 49.14. Both leave substantial room for improvement.</p>
+      <div class="results-controls">
+        <div class="filter-group" role="group" aria-label="Filter models by input modality"><button type="button" data-filter="all" aria-pressed="true">All models</button><button type="button" data-filter="Omni" aria-pressed="false">Omni</button><button type="button" data-filter="VL" aria-pressed="false">VL</button></div>
+        <label class="model-search">Find a model <input id="model-search" type="search" placeholder="Model name" autocomplete="off"></label>
+      </div>
+      <div class="results-table-wrap" tabindex="0" role="region" aria-label="Model results; scroll horizontally on small screens">
+        <table id="results-table">
+          <caption>Main results on 918 instances. All scores are on a 0–100 scale; higher is better.</caption>
+          <thead><tr><th scope="col">Model</th><th scope="col">Input</th><th scope="col" class="col-a" aria-sort="none"><button data-sort="a">A · EFS <span aria-hidden="true">↕</span></button></th><th scope="col" class="col-b" aria-sort="descending"><button data-sort="b">B · IRS <span aria-hidden="true">↓</span></button></th><th scope="col" class="col-c" aria-sort="none"><button data-sort="c">C · EFS <span aria-hidden="true">↕</span></button></th><th scope="col" class="col-c" aria-sort="none"><button data-sort="niu">C · NIU <span aria-hidden="true">↕</span></button></th></tr></thead>
+          <tbody id="results-body"></tbody>
+        </table>
+      </div>
+      <p id="results-status" class="section-note" aria-live="polite"></p>
+      <noscript><p>The full model results are available in Tables 1 and 2 of the <a href="assets/omni2web-paper.pdf">paper</a>.</p></noscript>
+      <p class="section-note">Omni denotes models with native audiovisual input; VL denotes vision-language models evaluated with visual input and a manual transcript. “—” indicates an unavailable Track A result. NIU uses the dataset-level oracle EFS as its denominator.</p>
+
+      <div class="findings">
+        <article class="finding"><span class="finding-number">01</span><h3>Grounding is not enough.</h3><p>Step-level analyses show that a model can locate the correct target and still fail to implement the requested edit.</p></article>
+        <article class="finding"><span class="finding-number">02</span><h3>Timing matters.</h3><p>Controlled input and temporal-alignment experiments support the value of synchronized speech and visual context for recovering user intent.</p></article>
+        <article class="finding"><span class="finding-number">03</span><h3>Recovered intent can travel further.</h3><p>For Qwen3.5-Omni-Plus, passing recovered instructions to the fixed executor raises EFS from 29.56 in direct editing to 51.08.</p></article>
+      </div>
+      <div class="oracle-panel"><div><p class="eyebrow">Room to improve</p><h3>A gap remains even with<br>a fixed executor.</h3><p>Oracle instructions are explicit reference instructions supplied to the same coding model.</p></div><div class="bar-comparison"><div class="bar-row"><div><span>Best recovered instructions</span><strong>51.08</strong></div><div class="bar-track"><span style="width:51.08%"></span></div></div><div class="bar-row oracle"><div><span>Oracle instructions</span><strong>89.69</strong></div><div class="bar-track"><span style="width:89.69%"></span></div></div><p>EFS · DeepSeek-v4-pro executor · 918 instances</p></div></div>
+    </section>
+
+    <section class="citation-band" id="citation" aria-labelledby="citation-title"><div class="wrap section citation-layout"><div><p class="eyebrow">04 / Citation</p><h2 id="citation-title">Working with Omni2Web?</h2><p>Please cite the paper if you use the benchmark or evaluation code.</p></div><div class="citation-box"><button id="copy-citation" type="button">Copy BibTeX</button><pre><code id="bibtex">@misc{han2026omni2web,
+  title={Omni2Web: Benchmarking Audiovisual Website Development},
+  author={Han, Minghao and Xing, Zhenghao and Cheng, Xize and Wang, Yuxuan and Chu, Yunfei and Yang, Qize and Xu, Jin},
+  year={2026}
+}</code></pre><p id="copy-status" class="sr-only" role="status"></p></div></div></section>
+  </main>
+  <footer class="wrap footer"><a class="wordmark" href="#" aria-label="Omni2Web home"><span class="sr-only">O</span><img class="brand-initial" src="assets/omni2web-o.svg" alt="" width="112" height="100">mni2Web<span class="wordmark-arrow" aria-hidden="true">↗</span></a><p>Benchmarking Audiovisual Website Development.</p><a href="assets/omni2web-paper.pdf" data-resource="paper">Paper <span aria-hidden="true">↗</span></a></footer>
+  <dialog id="figure-dialog" aria-label="Enlarged figure"><button type="button" id="close-figure" aria-label="Close enlarged figure">Close <span aria-hidden="true">×</span></button><img id="enlarged-figure" alt=""></dialog>
+</body>
+</html>
