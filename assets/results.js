@@ -84,6 +84,15 @@ window.OMNI2WEB_RESULTS = {
       "niu": 27.17
     },
     {
+      "name": "Muse Spark 1.2",
+      "logo": "meta.png",
+      "modality": "Omni",
+      "a": 35.23,
+      "b": 27.64,
+      "c": 33.35,
+      "niu": 37.18
+    },
+    {
       "name": "Seed2.0 Lite",
       "logo": "doubao-color.png",
       "modality": "Omni",
@@ -100,6 +109,51 @@ window.OMNI2WEB_RESULTS = {
       "b": 47.46,
       "c": 49.77,
       "niu": 55.49
+    },
+    {
+      "name": "Gemini 3.6 Flash",
+      "logo": "gemini-color.png",
+      "modality": "Omni",
+      "a": 56.41,
+      "b": 51.83,
+      "c": 53.24,
+      "niu": 59.36
+    },
+    {
+      "name": "Gemini 3.7 Flash",
+      "logo": "gemini-color.png",
+      "modality": "Omni",
+      "a": 55.16,
+      "b": 49.98,
+      "c": 54.12,
+      "niu": 60.34
+    },
+    {
+      "name": "Gemini 3.8 Flash",
+      "logo": "gemini-color.png",
+      "modality": "Omni",
+      "a": 56.95,
+      "b": 50.75,
+      "c": 54.05,
+      "niu": 60.26
+    },
+    {
+      "name": "Qwen3.8-Omni-Flash",
+      "logo": "qwen-color.png",
+      "modality": "Omni",
+      "a": 56.65,
+      "b": 51.62,
+      "c": 57.75,
+      "niu": 64.39
+    },
+    {
+      "name": "Qwen3.8-Omni-Flash-Realtime",
+      "logo": "qwen-color.png",
+      "modality": "Omni",
+      "a": 45.09,
+      "b": 57.01,
+      "c": 60.24,
+      "niu": 67.16
     },
     {
       "name": "Qwen3.5-Omni-Plus",
@@ -155,5 +209,6 @@ window.OMNI2WEB_RESULTS = {
       "c": 47.07,
       "niu": 52.48
     }
-  ]
+  ],
+  "paper_model_count": 17
 };

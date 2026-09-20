@@ -16,6 +16,16 @@ let direction = -1;
 const body = document.getElementById("results-body");
 const maxima = data && Object.fromEntries(["a", "b", "c", "niu"].map(key => [key, Math.max(...data.models.map(model => model[key] ?? -Infinity))]));
 
+if (data) {
+  for (const element of document.querySelectorAll("[data-model-count]")) element.textContent = data.models.length;
+  for (const element of document.querySelectorAll("[data-paper-model-count]")) element.textContent = data.paper_model_count;
+  for (const element of document.querySelectorAll("[data-additional-model-count]")) element.textContent = data.models.length - data.paper_model_count;
+  for (const element of document.querySelectorAll("[data-best-score]")) element.textContent = maxima[element.dataset.bestScore].toFixed(2);
+  for (const element of document.querySelectorAll("[data-best-bar]")) element.style.width = `${maxima[element.dataset.bestBar]}%`;
+  for (const element of document.querySelectorAll("[data-oracle-score]")) element.textContent = data.oracle_efs.toFixed(2);
+  for (const element of document.querySelectorAll("[data-oracle-bar]")) element.style.width = `${data.oracle_efs}%`;
+}
+
 function renderResults() {
   if (!data) return;
   const models = data.models.filter(model => (filter === "all" || model.modality === filter) && model.name.toLowerCase().includes(query));

@@ -67,8 +67,10 @@ The included workflow publishes only the static page and `assets/`. Later update
 - `index.html`: page text, authors, metric explanations, and citation.
 - `styles.css`: layout and the navy / blue / coral / teal palette shared with the paper.
 - `assets/omni2web-o.svg`: the original illustrated initial, combining a navy O, a teal speech trace, and an orange cursor. It replaces the first letter in the hero, navigation, and footer; `assets/favicon.svg` uses the same design.
-- `assets/results.js`: main-table scores, rounded as in the paper; unavailable values are `null`.
+- `assets/results.js`: leaderboard scores on a 0–100 scale; unavailable values are `null`. Fields `a` and `c` are EFS, `b` is IRS, and `niu` is Track C's normalized instruction utility. The page derives model counts, best scores, and comparison bars from this file. Keep the fallback values in `index.html` aligned when editing it.
 - `assets/overview.png` and `assets/anatomy.png`: web versions of Figures 1 and 2.
 - `assets/omni2web-paper.pdf`: the arXiv version of the paper.
 
-Keep all benchmark counts and result descriptions consistent with the paper. Lato's license is included in `assets/fonts/LICENSE.txt`.
+The leaderboard contains the paper's 17 models and six additional evaluations: Gemini 3.6 Flash, Gemini 3.7 Flash, Gemini 3.8 Flash, Muse Spark 1.2, Qwen3.8-Omni-Flash, and Qwen3.8-Omni-Flash-Realtime. All six use the same 918 instances and DeepSeek-v4-pro executor, with oracle EFS 89.69. Their scores were verified against per-instance evaluation records and converted to the page's 0–100 scale. Track B uses Component-F1, and NIU uses the full-precision dataset-level oracle mean. The paper PDF retains its original 17-model scope. The two Qwen names follow the official release announcement at https://qwen.ai/blog?id=qwen3.8-omni-flash.
+
+Keep benchmark counts and metric definitions consistent with the paper, and identify additional leaderboard evaluations separately. Lato's license is included in `assets/fonts/LICENSE.txt`.

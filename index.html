@@ -33,10 +33,10 @@
       <p class="paper-title">Benchmarking Audiovisual<br class="desktop-break"> Website Development</p>
       <p class="hero-hook">“Change <span class="cue-word">this<svg viewBox="0 0 32 40" aria-hidden="true"><path d="M4 3 9 33l8-10 12 1Z"/></svg></span>.”<br class="mobile-break"> Which element? What edit?</p>
       <div class="authors" aria-label="Authors">
-        <span>Minghao Han<sup>1,*</sup></span><span>Zhenghao Xing<sup>2,*</sup></span><span>Xize Cheng<sup>3</sup></span><span>Yuxuan Wang<sup>3</sup></span><span>Yunfei Chu<sup>3</sup></span><span>Qize Yang<sup>3</sup></span><span>Jin Xu<sup>3,‡</sup></span>
+        <span>Minghao Han<sup>1,2,*</sup></span><span>Zhenghao Xing<sup>3,*</sup></span><span>Xize Cheng<sup>2</sup></span><span>Yuxuan Wang<sup>2</sup></span><span>Junming Lin<sup>2,4</sup></span><span>Ling Wang<sup>2,5</sup></span><span>Yinsong Yan<sup>2,5</sup></span><span>Yunfei Chu<sup>2</sup></span><span>Qize Yang<sup>2</sup></span><span>Jin Xu<sup>2,&dagger;</sup></span>
       </div>
-      <p class="affiliations"><span><sup>1</sup> Fudan University</span><span><sup>2</sup> The Chinese University of Hong Kong</span><span><sup>3</sup> Qwen Team, Alibaba Group</span></p>
-      <p class="author-notes">* Equal contribution. <span>‡ Corresponding author.</span></p>
+      <p class="affiliations"><span><sup>1</sup> FDU</span><span><sup>2</sup> Alibaba Token Hub, Alibaba Group</span><span><sup>3</sup> CUHK</span><span><sup>4</sup> THU</span><span><sup>5</sup> PolyU</span></p>
+      <p class="author-notes"><span><sup>*</sup> Equal contribution.</span><span><sup>&dagger;</sup> Corresponding author.</span></p>
       <div class="resource-links" aria-label="Project resources">
         <a class="button primary" data-resource="paper" href="assets/omni2web-paper.pdf">Read the paper <span aria-hidden="true">↗</span></a>
         <a class="button" data-resource="code" aria-disabled="true">Code <span class="availability">coming soon</span></a>
@@ -46,7 +46,7 @@
         <div><dt>Instances</dt><dd>918</dd></div>
         <div><dt>Edit steps</dt><dd>13,907</dd></div>
         <div><dt>Operation types</dt><dd>12</dd></div>
-        <div><dt>Models evaluated</dt><dd>17</dd></div>
+        <div><dt>Models evaluated</dt><dd data-model-count>23</dd></div>
       </dl>
     </section>
 
@@ -81,7 +81,8 @@
 
     <section class="wrap section" id="results" aria-labelledby="results-title">
       <div class="section-heading"><p class="eyebrow">03 / Main results</p><h2 id="results-title">Finding the target<br>is only the beginning.</h2></div>
-      <p class="lead">We evaluate 17 open- and closed-source models. The best direct-editing EFS is 51.17; the best instruction-recovery IRS is 49.14. Both leave substantial room for improvement.</p>
+      <p class="lead">Our leaderboard covers <span data-model-count>23</span> open- and closed-source models. The best direct-editing EFS is <span data-best-score="a">56.95</span>, and the best instruction-recovery IRS is <span data-best-score="b">57.01</span>. Both leave substantial room for improvement.</p>
+      <p class="section-note">The leaderboard includes the <span data-paper-model-count>17</span> models reported in the paper and <span data-additional-model-count>6</span> additional models.</p>
       <div class="results-controls">
         <div class="filter-group" role="group" aria-label="Filter models by input modality"><button type="button" data-filter="all" aria-pressed="true">All models</button><button type="button" data-filter="Omni" aria-pressed="false">Omni</button><button type="button" data-filter="VL" aria-pressed="false">VL</button></div>
         <label class="model-search">Find a model <input id="model-search" type="search" placeholder="Model name" autocomplete="off"></label>
@@ -94,7 +95,7 @@
         </table>
       </div>
       <p id="results-status" class="section-note" aria-live="polite"></p>
-      <noscript><p>The full model results are available in Tables 1 and 2 of the <a href="assets/omni2web-paper.pdf">paper</a>.</p></noscript>
+      <noscript><p>Enable JavaScript to view the complete leaderboard. Results for the 17 models studied in the <a href="assets/omni2web-paper.pdf">paper</a> are available in Tables 1 and 2.</p></noscript>
       <p class="section-note">Omni denotes models with native audiovisual input; VL denotes vision-language models evaluated with visual input and a manual transcript. “—” indicates an unavailable Track A result. NIU uses the dataset-level oracle EFS as its denominator.</p>
 
       <div class="findings">
@@ -102,12 +103,12 @@
         <article class="finding"><span class="finding-number">02</span><h3>Timing matters.</h3><p>Controlled input and temporal-alignment experiments support the value of synchronized speech and visual context for recovering user intent.</p></article>
         <article class="finding"><span class="finding-number">03</span><h3>Recovered intent can travel further.</h3><p>For Qwen3.5-Omni-Plus, passing recovered instructions to the fixed executor raises EFS from 29.56 in direct editing to 51.08.</p></article>
       </div>
-      <div class="oracle-panel"><div><p class="eyebrow">Room to improve</p><h3>A gap remains even with<br>a fixed executor.</h3><p>Oracle instructions are explicit reference instructions supplied to the same coding model.</p></div><div class="bar-comparison"><div class="bar-row"><div><span>Best recovered instructions</span><strong>51.08</strong></div><div class="bar-track"><span style="width:51.08%"></span></div></div><div class="bar-row oracle"><div><span>Oracle instructions</span><strong>89.69</strong></div><div class="bar-track"><span style="width:89.69%"></span></div></div><p>EFS · DeepSeek-v4-pro executor · 918 instances</p></div></div>
+      <div class="oracle-panel"><div><p class="eyebrow">Room to improve</p><h3>A gap remains even with<br>a fixed executor.</h3><p>Oracle instructions are explicit reference instructions supplied to the same coding model.</p></div><div class="bar-comparison"><div class="bar-row"><div><span>Best recovered instructions</span><strong data-best-score="c">60.24</strong></div><div class="bar-track"><span data-best-bar="c" style="width:60.24%"></span></div></div><div class="bar-row oracle"><div><span>Oracle instructions</span><strong data-oracle-score>89.69</strong></div><div class="bar-track"><span data-oracle-bar style="width:89.69%"></span></div></div><p>EFS · DeepSeek-v4-pro executor · 918 instances</p></div></div>
     </section>
 
     <section class="citation-band" id="citation" aria-labelledby="citation-title"><div class="wrap section citation-layout"><div><p class="eyebrow">04 / Citation</p><h2 id="citation-title">Working with Omni2Web?</h2><p>Please cite the paper if you use the benchmark or evaluation code.</p></div><div class="citation-box"><button id="copy-citation" type="button">Copy BibTeX</button><pre><code id="bibtex">@misc{han2026omni2web,
   title={Omni2Web: Benchmarking Audiovisual Website Development},
-  author={Han, Minghao and Xing, Zhenghao and Cheng, Xize and Wang, Yuxuan and Chu, Yunfei and Yang, Qize and Xu, Jin},
+  author={Han, Minghao and Xing, Zhenghao and Cheng, Xize and Wang, Yuxuan and Lin, Junming and Wang, Ling and Yan, Yinsong and Chu, Yunfei and Yang, Qize and Xu, Jin},
   year={2026}
 }</code></pre><p id="copy-status" class="sr-only" role="status"></p></div></div></section>
   </main>
