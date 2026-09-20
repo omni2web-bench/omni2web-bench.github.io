@@ -1,8 +1,8 @@
 # Omni2Web project page
 
-A static project page for **Omni2Web: Benchmarking Audiovisual Website Development**. It includes the authors, paper, benchmark overview, three evaluation tracks, searchable and sortable main results, and a BibTeX citation.
+A static project page for **Omni2Web: Benchmarking Audiovisual Website Development**. It includes the authors, benchmark overview, three evaluation tracks, searchable and sortable main results, and a BibTeX citation.
 
-No Node.js build, external font service, analytics, or API key is required. Fonts, figures, model logos, results, and the paper are served locally. All asset links are relative, so the page works under either a GitHub Pages project path or a domain root.
+No Node.js build, external font service, analytics, or API key is required. Fonts, figures, model logos, and results are served locally. The paper link is temporarily a return link to the project page and will be replaced with the arXiv URL after the paper is updated.
 
 ## Transfer and commit from another computer
 
@@ -46,7 +46,7 @@ A private source repository does not by itself make a deployed GitHub Pages site
 
 ## Configure public links
 
-Set the project URL, code repository, and dataset URL in `site-config.js`. Links with a `null` value remain marked as coming soon. The paper link defaults to `assets/omni2web-paper.pdf`.
+Set the project URL, code repository, dataset URL, and paper URL in `site-config.js`. Links with a `null` value remain marked as coming soon. Until the arXiv version is updated, the paper link remains `./` and returns to the project page.
 
 The citation intentionally has no arXiv identifier until one is assigned. Add the identifier and public URL when available.
 
@@ -69,7 +69,7 @@ The included workflow publishes only the static page and `assets/`. Later update
 - `assets/omni2web-o.svg`: the original illustrated initial, combining a navy O, a teal speech trace, and an orange cursor. It replaces the first letter in the hero, navigation, and footer; `assets/favicon.svg` uses the same design.
 - `assets/results.js`: leaderboard scores on a 0–100 scale; unavailable values are `null`. Fields `a` and `c` are EFS, `b` is IRS, and `niu` is Track C's normalized instruction utility. The page derives model counts, best scores, and comparison bars from this file. Keep the fallback values in `index.html` aligned when editing it.
 - `assets/overview.png` and `assets/anatomy.png`: web versions of Figures 1 and 2.
-- `assets/omni2web-paper.pdf`: the arXiv version of the paper.
+- The paper PDF is intentionally not included until the updated arXiv version is ready.
 
 The leaderboard contains the paper's 17 models and six additional evaluations: Gemini 3.6 Flash, Gemini 3.7 Flash, Gemini 3.8 Flash, Muse Spark 1.2, Qwen3.8-Omni-Flash, and Qwen3.8-Omni-Flash-Realtime. All six use the same 918 instances and DeepSeek-v4-pro executor, with oracle EFS 89.69. Their scores were verified against per-instance evaluation records and converted to the page's 0–100 scale. Track B uses Component-F1, and NIU uses the full-precision dataset-level oracle mean. The paper PDF retains its original 17-model scope. The two Qwen names follow the official release announcement at https://qwen.ai/blog?id=qwen3.8-omni-flash.
 
